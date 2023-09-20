@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Stations
+{% endblock %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Police-stations</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Surat city is situated on the western side of India in the state of Gujarat. Surat is also a very clean city and there are several names that have been given to the city such as “The Diamond City”, “The Silk City” and “The Green City”.
+
+          Surat is a city where the Britishers first landed in India. Surat also served as a port in the past where the boats of more than 84 countries used to harbor.
+          
+          Surat Police is divided into four Zones i.e Zone -I, Zone -II, Zone -III & Zone- IV each headed by Deputy Commisoner of Police. These Four zones are further divided into 8 Divisons. </p>
+      </div>
+      <div class="flex flex-wrap -m-4">
+        {% for station in stations %}
+        <div class="p-4 lg:w-1/2">
+          <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="{{ station.image.url }}">
+            <div class="flex-grow sm:pl-8">
+              <h2 class="title-font font-medium text-lg text-gray-900">{{station.name}} [{{station.state}}]</h2>
+              <h3 class="text-gray-500 mb-3">{{station.city}} [ {{station.pin}} ]</h3>
+              <p class="mb-4">{{station.content}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
